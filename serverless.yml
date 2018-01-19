@@ -1,0 +1,22 @@
+service: user-service
+
+provider:
+  name: aws
+  profile: default
+  runtime: nodejs6.10
+  region: ${self:custom.config.region}
+  stage: ${self:custom.config.stage}
+  memorySize: 128
+  timeout: 30
+  versionFunctions: false
+
+functions:
+  user-create:
+    handler: functions/user.main
+    events:
+      - http:
+          path: /
+          method: post
+          cors: true
+custom:
+  config: ${file(./config.yml)}

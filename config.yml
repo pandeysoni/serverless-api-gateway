@@ -1,0 +1,4 @@
+---
+stage: dev
+region: ap-south-1
+iamrole: arn:aws:iam::902539448322:role/Lambda
